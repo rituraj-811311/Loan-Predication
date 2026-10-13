@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Loan Prediction System</h1>
+    <p>Enter your details to check your loan prediction.</p>
+
+    <form action="/predict" method="POST">
+        <label>Age:</label>
+        <input type="number" name="Age" min="18" max="100" required>
+        <br><br>
+
+        <label>Income:</label>
+        <input type="number" name="Income" min="1" required>
+        <br><br>
+
+        <label>Credit Score:</label>
+        <input type="number" name="CreditScore" min="300" max="900" required>
+        <br><br>
+
+        <label>Loan Amount:</label>
+        <input type="number" name="LoanAmount" min="1" required>
+        <br><br>
+
+        <label>Experience (years):</label>
+        <input type="number" name="Experience" min="0" max="60" required>
+        <br><br>
+
+        <label>Education:</label>
+        <select name="Education" required>
+            <option value="Graduate">Graduate</option>
+            <option value="Not Graduate">Not Graduate</option>
+        </select>
+        <br><br>
+
+        <label>Employment:</label>
+        <select name="Employment" required>
+            <option value="Salaried">Salaried</option>
+            <option value="Self-Employed">Self-Employed</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Predict Loan Status</button>
+    </form>
+
+    {% if prediction %}
+        <h2>{{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
